@@ -18,12 +18,12 @@ getArtistFans(id: string) {
   return this.http.get(`${environment.apiBaseUrl}/artist/${id}/fans`)
 }
 
-getArtistAlbums(id: string) {
+getAlbums(id: string) {
   return this.http.get(`${environment.apiBaseUrl}/artist/${id}/albums`)
 }
 
 
-getArtistTracks(id: string) {
+getTopTracks(id: string) {
   return this.http.get(`${environment.apiBaseUrl}/artist/${id}/top`)
 }
 
