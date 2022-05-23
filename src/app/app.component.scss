@@ -3,8 +3,8 @@
 
     display: flex;// so that we can use the flex box
     flex-direction: column;
-    height: 100%;
-    overflow: hidden;
+    // height: 100%;
+    // overflow: hidden;
 
     .page-content{
         flex-grow: 1;//the page content div will take up all the  remaining space

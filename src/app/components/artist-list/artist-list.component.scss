@@ -1,57 +1,5 @@
 @import '../../../global-style.scss';
-.home-container{
-    
-}
-.search-bar{
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin:auto;//to center the content
-    padding-top: 50px;
-}
-.empty-list{
-   p{
-    color:$pink;
-    font-size: 30px;
-   }
-}
-.artists-list{
-    margin-top: 35px;
-    display: flex;
-    
-}
-
-.main-card-container{
-    overflow: scroll
-
-}
-.row{
-    display: flex;
-
-}
-.card{
-    margin: 10px;
-    padding: 20px;
-    display: block;
-    align-items: center;
-
-    justify-content: center;
-    
-}
-.card-img{
-    width:100%;
-}
-
-.artist-card{
-    display: flex;
-    justify-content: center;
-    // align-items: center;
-    overflow-y: scroll;
-    margin-left: auto;
-    margin-right: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-
+.card-container{
     position: relative;
     background: white;
     border-radius: 5px;

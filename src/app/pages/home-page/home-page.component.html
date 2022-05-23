@@ -1,1 +1,35 @@
-<p>home-page works!</p>
+<!-- <p>home-page works!</p> -->
+<div class="home-container">
+  <div class="search-bar">
+      <div class="field">
+          <p class="control has-icons-left">
+            <input class="input" type="text" placeholder="Search artist" (input)="showArtists($event)">
+            <span class="icon is-small is-left">
+              <fa-icon [icon]="faSearch"></fa-icon>
+            </span>
+          </p>
+      </div>
+  </div>
+
+  
+
+  <div class="main-card-container">
+    <div class="empty-list" *ngIf="!artistsSearch" nz-row>
+      <p>Search for artists</p>
+    </div>
+    <div *ngIf="artistsSearch" class="artist-card"  nz-row [nzGutter]="26" >
+        <div *ngFor="let artist of allArtists" nz-col nzSpan="4" class="card" (click)=showArtistInfo(artist)>
+        <div >
+          <img src={{artist.artist.picture}} alt="" class="card-img">
+
+        </div>
+        <p >{{artist.artist.name}}</p>
+      </div>
+    </div>
+</div>
+
+<div>
+
+</div>
+
+</div>
