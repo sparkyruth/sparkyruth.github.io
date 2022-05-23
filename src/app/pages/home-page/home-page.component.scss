@@ -13,7 +13,13 @@
    p{
     color:$pink;
     font-size: 30px;
+    
    }
+   text-align: center;
+   position: absolute;
+    top: 50%;
+    width:100%;
+    transform: translateY(-50%);
 }
 .artists-list{
     margin-top: 35px;
@@ -22,7 +28,13 @@
 }
 
 .main-card-container{
-    overflow: scroll
+    overflow: scroll;
+    position:relative;
+    height: 70vh;
+    text-align: center;
+    width:100%;
+
+
 
 }
 .row{
@@ -30,12 +42,60 @@
 
 }
 .card{
-    margin: 10px;
+    margin: 1%;
     padding: 20px;
     display: block;
     align-items: center;
 
     justify-content: center;
+    
+}
+.ant-list-sm .ant-list-item{
+    padding: 8px 0px;
+}
+@media screen and(min-width: 997px){
+    .card{
+        width: 15%;
+    }
+    .tracks{
+        width: 66%;
+        padding: 1%;
+     }
+     .thumbnail{
+         width:30%;
+     }
+}
+
+@media only screen and(min-width: 600px) and (max-width:996px){
+    .card{
+        width: 30%;
+    }
+    .ant-list-sm .ant-list-item{
+        padding: 8px 0px;
+    }
+    .tracks{
+        width: 66%;
+        padding: 1%;
+     }
+     .thumbnail{
+         width:30%;
+     }
+    
+}
+@media screen and(max-width: 600px){
+    .card{
+        width: 100%;
+
+    }
+    .tracks{
+       width: 48%;
+       padding: 1%;
+    }
+    .thumbnail{
+        width:48%;
+    }
+   
+  
     
 }
 .card-img{
@@ -55,17 +115,17 @@
     position: relative;
     background: white;
     border-radius: 5px;
-    box-shadow: 0px 2px 15px 2px rgba(black, 0.068);//2px to the bottom, 15px is the blur, the next 2px is the spread value: how much larger th e box shadow is as compared to the main div
-    transition: box-shadow 0.2s ease-out ;
+    // box-shadow: 0px 2px 15px 2px rgba(black, 0.068);//2px to the bottom, 15px is the blur, the next 2px is the spread value: how much larger th e box shadow is as compared to the main div
+    // transition: box-shadow 0.2s ease-out ;
 
     &:hover{ //the & sign is a scss operator allowing us to use  the hover styling within the elements with note-card-container
         cursor: pointer;
-        box-shadow:0px 0px 0px 4px rgba(black, 0.068);//on hover, make box shadow look like an outline
+        // box-shadow:0px 0px 0px 4px rgba(black, 0.068);//on hover, make box shadow look like an outline
 
     }
 
     .card-content{
-        padding:25px;
+        padding:1%;
 
         .card-title{
            font-size:22px;

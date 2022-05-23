@@ -17,14 +17,14 @@
   </div>
 
   <div class="main-card-container">
-    <div class="empty-list" *ngIf="!artistsSearch" nz-row>
+    <div class="empty-list" *ngIf="!artistsSearch" nz-col nzSpan="24">
       <p>Search for artists</p>
     </div>
-    <div *ngIf="artistsSearch" class="artist-card" nz-row [nzGutter]="26">
+    <div class="content-wrapper" nz-col nzSpan='20' nzOffset='2'>
+    <div *ngIf="artistsSearch" class="artist-card" nz-row [nzGutter]="14">
       <div
         *ngFor="let artist of allArtists"
-        nz-col
-        nzSpan="4"
+        
         class="card"
         (click)="showArtistInfo(artist)"
       >
@@ -34,6 +34,7 @@
         <p>{{ artist.artist.name }}</p>
       </div>
     </div>
+  </div>
   <nz-empty *ngIf="noData">Artist not found</nz-empty>
 
   </div>
@@ -48,12 +49,12 @@
       (nzOnClose)="closeDrawer()"
     >
       <ng-container *nzDrawerContent class="wrapper">
-        <div class="" nz-row>
-          <div class="card-content" nz-col nzSpan="6">
+        <div class="" style="display: flex; ">
+          <div class="card-content thumbnail" >
             <img src={{artist?.artist?.picture}} alt="" style="width: 100%;">
 
           </div>
-          <div class="card-content" nz-col nzSpan="18">
+          <div class="card-content tracks" style="margin-top: 10px;">
             <h1> <b>Top Tracks</b> </h1>
             <nz-list  nzSize="small">
               <nz-list-item *ngFor="let track of topTracks; index as i">{{i+1}}. {{track.title}}</nz-list-item>
@@ -67,8 +68,6 @@
           <div  class="artist-card" nz-row [nzGutter]="26">
             <div
               *ngFor="let album of albums"
-              nz-col
-              nzSpan="4"
               class="card"
             >
               <div>
