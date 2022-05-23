@@ -1,0 +1,33 @@
+@import '../global-style.scss';
+.layout-box{
+
+    display: flex;// so that we can use the flex box
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .page-content{
+        flex-grow: 1;//the page content div will take up all the  remaining space
+        overflow-y: scroll;// we put scroll here so that the scrolling only occurs on the content section and not the whole layout box, which contains the top bar
+
+    }
+    
+}
+.top-bar{
+    width: 100%;
+    height: 68px;
+    background: linear-gradient(to right, $pink, $blue);
+    box-shadow: 0px 0px 10px 0px rgba(black, 0.15);
+
+    display: flex;
+    flex-shrink: 0;//to prevent the top bar from being squashed/from shrinking
+
+    //center text
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        font-size: 24px;
+        color: white;
+    }
+}
