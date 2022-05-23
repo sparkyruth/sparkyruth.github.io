@@ -1,35 +1,88 @@
 <!-- <p>home-page works!</p> -->
 <div class="home-container">
   <div class="search-bar">
-      <div class="field">
-          <p class="control has-icons-left">
-            <input class="input" type="text" placeholder="Search artist" (input)="showArtists($event)">
-            <span class="icon is-small is-left">
-              <fa-icon [icon]="faSearch"></fa-icon>
-            </span>
-          </p>
-      </div>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          class="input"
+          type="text"
+          placeholder="Search artist"
+          (input)="showArtists($event)"
+        />
+        <span class="icon is-small is-left">
+          <fa-icon [icon]="faSearch"></fa-icon>
+        </span>
+      </p>
+    </div>
   </div>
-
-  
 
   <div class="main-card-container">
     <div class="empty-list" *ngIf="!artistsSearch" nz-row>
       <p>Search for artists</p>
     </div>
-    <div *ngIf="artistsSearch" class="artist-card"  nz-row [nzGutter]="26" >
-        <div *ngFor="let artist of allArtists" nz-col nzSpan="4" class="card" (click)=showArtistInfo(artist)>
-        <div >
-          <img src={{artist.artist.picture}} alt="" class="card-img">
-
+    <div *ngIf="artistsSearch" class="artist-card" nz-row [nzGutter]="26">
+      <div
+        *ngFor="let artist of allArtists"
+        nz-col
+        nzSpan="4"
+        class="card"
+        (click)="showArtistInfo(artist)"
+      >
+        <div>
+          <img src="{{ artist.artist.picture }}" alt="" class="card-img" />
         </div>
-        <p >{{artist.artist.name}}</p>
+        <p>{{ artist.artist.name }}</p>
       </div>
     </div>
-</div>
+  <nz-empty *ngIf="noData">Artist not found</nz-empty>
 
-<div>
+  </div>
 
-</div>
+  <div>
+    <nz-drawer 
+      [nzClosable]="false"
+      [nzVisible]="visible"
+      nzPlacement="bottom"
+      [nzHeight]="drawerHeight"
+      nzTitle="{{ artist?.artist?.name }}"
+      (nzOnClose)="closeDrawer()"
+    >
+      <ng-container *nzDrawerContent class="wrapper">
+        <div class="" nz-row>
+          <div class="card-content" nz-col nzSpan="6">
+            <img src={{artist?.artist?.picture}} alt="" style="width: 100%;">
 
+          </div>
+          <div class="card-content" nz-col nzSpan="18">
+            <h1> <b>Top Tracks</b> </h1>
+            <nz-list  nzSize="small">
+              <nz-list-item *ngFor="let track of topTracks; index as i">{{i+1}}. {{track.title}}</nz-list-item>
+            </nz-list>
+  
+          </div>
+        </div>
+        <div nz-row class="album">
+          <h1> <b>Albums</b> </h1>
+
+          <div  class="artist-card" nz-row [nzGutter]="26">
+            <div
+              *ngFor="let album of albums"
+              nz-col
+              nzSpan="4"
+              class="card"
+            >
+              <div>
+                <img src="{{ album.cover}}" alt="" class="card-img" />
+              </div>
+              <h2><b>{{ album.title }}</b></h2>
+              <p>{{ album.release_date }}</p>
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+    </nz-drawer>
+    
+
+  </div>
 </div>

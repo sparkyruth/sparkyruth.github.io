@@ -16,11 +16,16 @@ export class HomePageComponent implements OnInit {
   artistImg: any;
   artistName:any;
   fansNumber:any;
-
+  visible = false;
   artistsSearch:boolean=false
   allArtists : any
   artistFans:any;
   artistId:any
+ artist:any;
+ topTracks:any;
+ albums:any;
+ drawerHeight:string='80%'
+ noData:boolean=false
   constructor(private ArtistsService:ArtistsService) { }
 
   ngOnInit(): void {
@@ -31,35 +36,69 @@ export class HomePageComponent implements OnInit {
     const filter = (event.target as HTMLInputElement).value.trim().toLocaleLowerCase();
     // this.filterLength = filter.length
     this.artistName = filter
-    console.log(this.artistName)
+    // console.log(this.artistName)
     this.getAnArtist(this.artistName)
     
   }
   getAnArtist(artistname:any){
     // console.log(this.artistName)
     this.ArtistsService.getAllArtists(artistname).subscribe((data:any)=>{
-      let artists = data.data;
-      // this.allArtists = artists
-      console.log(artists.map((a:any) => a))
-      this.allArtists=data.data;
-      this.allArtists.forEach((element: { id: any; }) => {
-        this.artistId=element.id;
-        console.log( this.artistId)
 
-      });
-        this.getFans(1055090952)
+      if(data){
+        this.noData=false
+        let artists = data.data;
+        // console.log(artists.map((a:any) => a))
+        this.allArtists=data.data;
+        this.allArtists.forEach((element: { id: any; }) => {
+          this.artistId=element.id;
+          // console.log( this.artistId)
+  
+        });
+          this.getFans(1055090952)
+      }
+      else{
+        this.noData=true
+
+      }
+     
 
 
     })
 }
 getFans(id:any){
-  this.ArtistsService.getArtistFans(id).subscribe((data:any)=>{
+  this.ArtistsService.getTopTracks(id).subscribe((data:any)=>{
     console.log(data)
+  
   })
 }
 
 showArtistInfo(data:any){
-console.log(data)
+  
+  this.visible = true;
+  this.artist=data
+  console.log(data)
+  this.getTopTracks(data)
+
+  this.getAlbums(data)
+}
+closeDrawer(): void {
+  this.visible = false;
+}
+
+getTopTracks(data:any){
+this.ArtistsService.getTopTracks(data?.artist?.id).subscribe((res:any)=>{
+  console.log(res)
+  this.topTracks=res.data
+  // console.log(this.topTracks)
+})
+
+}
+getAlbums(data:any){
+  this.ArtistsService.getAlbums(data?.artist?.id).subscribe((res:any)=>{
+    console.log(res)
+    this.albums=res.data
+    console.log(this.albums)
+  })
 }
 
 
