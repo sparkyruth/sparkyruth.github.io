@@ -1,6 +1,6 @@
 {
     "/api": {
-      "target": "https://api.deezer.com",
+      "target": "https://developers.deezer.com",
       "secure": false,
       "pathRewrite": {
         "^/api": ""
