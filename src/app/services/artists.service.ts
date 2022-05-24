@@ -10,7 +10,10 @@ export class ArtistsService {
 
  
 getAllArtists(artistName: string) {
-  return this.http.get(`${environment.apiBaseUrl}/search?q=artist:"${artistName}"`)
+  console.log(`${environment.apiBaseUrl}/search?q=artist:beyonce`, environment)
+  // return this.http.get(`${environment.apiBaseUrl}/search?q=artist:"${artistName}"`)
+  return this.http.get(`https://api.deezer.com/search?q=artist:"${artistName}"`)
+
   // return this.http.get(`https://api.deezer.com/search?q=artist:"${artistName}"`)
 }
 
