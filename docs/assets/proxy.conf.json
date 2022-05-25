@@ -5,6 +5,8 @@
       "pathRewrite": {
         "^/api": ""
       },
-      "changeOrigin": true
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "headers": {"host":"https://developers.deezer.com"}
     }
   }
